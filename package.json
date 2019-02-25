@@ -37,6 +37,8 @@
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addons": "^4.1.13",
     "@storybook/react": "^4.1.13",
+    "@types/storybook-addon-jsx": "^5.4.2",
+    "@types/storybook__react": "^4.0.1",
     "babel-loader": "^8.0.5",
     "storybook-addon-jsx": "^6.0.0"
   }
