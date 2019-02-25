@@ -2,7 +2,7 @@
 
 ...a react thing; [see REACT_README.md](https://github.com/edwardsharp/emergencyindex_react/blob/master/REACT_README.md)
 
-[storybook](https://edwardsharp.github.io/emergencyindex_react/index.html)
+[![storybook](https://github.com/storybooks/brand/blob/master/badge/badge-storybook.svg)](https://edwardsharp.github.io/emergencyindex_react/index.html)
 
 ### devel bunniez:
 
