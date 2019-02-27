@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from './components/Button';
-import logo from './logo.svg';
+import blob from './blob.svg';
 import './App.css';
 
 class App extends Component {
@@ -8,18 +8,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <div style={{backgroundImage: `url('${blob}'`}} className="App-blob" />
           <p>
-            <Button variant="contained" color="primary">Emergency INDEX</Button>
+            <Button variant="contained" color="primary" href={window.location.host.match(/localhost/) ? 'http://localhost:9009' : 'https://edwardsharp.github.io/emergencyindex_react/index.html'}>storybook 📓</Button>
           </p>
-          <a
-            className="App-link"
-            href="https://alveol.us"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            😸
-          </a>
+          <Button variant="contained" href="https://github.com/emergencyindex/">emergencyINDEX on github 😸</Button>
         </header>
       </div>
     );

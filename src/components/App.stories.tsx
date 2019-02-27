@@ -1,13 +1,10 @@
 import React from 'react';
 import { setAddon, storiesOf } from '@storybook/react';
-import { linkTo } from '@storybook/addon-links';
 import JSXAddon from 'storybook-addon-jsx';
-import { Welcome } from '@storybook/react/demo';
-import Button from './Button'
 
 setAddon(JSXAddon);
 
-storiesOf('Welcome', module)
+storiesOf('Introduction', module)
 .add('to Storybook', () => <>
   <h1>Emergency INDEX</h1>
   <h3>storybook</h3>
