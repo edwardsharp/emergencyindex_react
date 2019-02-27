@@ -42,10 +42,10 @@ class Project extends Component<{ project: iProject }> {
             {project.contact}
 
             {project.links && project.links.map(link => {
-              const l = link.replace('http://', '').replace('https://', '')
+              const l = link.match('http://') || link.match('https://') ? link : `http://${link}`
               return (<>
                 <br />
-                <a href="http://{{ link_strip }}" target="_blank" rel="noopener noreferrer">{l}</a>
+                <a href={l} target="_blank" rel="noopener noreferrer">{l}</a>
               </>)
             })}
           </p>
@@ -67,10 +67,10 @@ class Project extends Component<{ project: iProject }> {
 
         </div>
         <footer className="col s12">
-          <a className="waves-effect waves-light btn btn-flat chip tooltipped" data-tooltip="Edit This Project on GitHub" data-position="top" href={`https://github.com/emergencyindex/emergencyindex.com/edit/master/_projects/${project.volume}/${project.pages}.md`} target="_blank">
+          <a className="waves-effect waves-light btn btn-flat chip tooltipped" data-tooltip="Edit This Project on GitHub" data-position="top" href={`https://github.com/emergencyindex/projects-${project.volume}/blob/projects/${project.pages}.md`} target="_blank">
             <i className="material-icons">edit</i>
           </a><br />
-          <a className="waves-effect waves-light btn btn-flat chip tooltipped" data-tooltip="Permanent link to this project" data-position="top" href={project.url}>
+          <a className="waves-effect waves-light btn btn-flat chip tooltipped" data-tooltip="Permanent link to this project" data-position="top" href={project.url ? project.url : '#'}>
             <i className="material-icons">link</i>
           </a><br />
 
