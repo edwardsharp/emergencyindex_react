@@ -1,22 +1,43 @@
-import React, { Component } from 'react';
-import Button from './components/Button';
-import blob from './blob.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Button from './components/Button'
+import blob from './blob.svg'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div style={{backgroundImage: `url('${blob}'`}} className="App-blob" />
+          <div
+            style={{ backgroundImage: `url('${blob}'` }}
+            className="App-blob"
+          />
           <p>
-            <Button variant="contained" color="primary" href={window.location.host.match(/localhost/) ? 'http://localhost:9009' : 'https://edwardsharp.github.io/emergencyindex_react/index.html'}>storybook 📓</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              href={
+                window.location.host.match(/localhost/)
+                  ? 'http://localhost:9009'
+                  : 'https://edwardsharp.github.io/emergencyindex_react/index.html'
+              }
+            >
+              storybook{' '}
+              <span role="img" aria-label="book">
+                📓
+              </span>
+            </Button>
           </p>
-          <Button variant="contained" href="https://github.com/emergencyindex/">emergencyINDEX on github 😸</Button>
+          <Button variant="contained" href="https://github.com/emergencyindex/">
+            emergencyINDEX on github{' '}
+            <span role="img" aria-label="smile cat">
+              😸
+            </span>
+          </Button>
         </header>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
