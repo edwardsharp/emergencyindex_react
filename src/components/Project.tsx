@@ -4,7 +4,7 @@ import './Project.css'
 
 class Project extends Component<{
   project: iProject
-  measure: () => void
+  measure?: () => void
   idx?: number
 }> {
   render() {

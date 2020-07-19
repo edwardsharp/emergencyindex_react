@@ -36,9 +36,10 @@ function Volume(props: VolumeProps) {
         parent={parent}
         rowIndex={index}
       >
-        {({ measure, registerChild }) => (
+        {({ measure }) => (
+          // do we need to registerChild, here? like registerChild() or ref={registerChild}
           // 'style' attribute required to position cell (within parent List)
-          <div ref={registerChild} style={style}>
+          <div style={style}>
             <Project measure={measure} project={projects[index]} idx={index} />
           </div>
         )}
@@ -49,7 +50,7 @@ function Volume(props: VolumeProps) {
   return (
     <List
       height={windowSize.height}
-      width={windowSize.width}
+      width={windowSize.width - 8}
       rowCount={projects.length}
       deferredMeasurementCache={cache}
       rowHeight={cache.rowHeight}
