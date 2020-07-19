@@ -1,5 +1,4 @@
 .Project .flex{
-  display: -webkit-flex;
   display: flex;
   padding: 10px;
 }
@@ -96,9 +95,7 @@ blockquote{
   font-size: 12px;
   position: absolute;
   text-align: right;
-  -webkit-transform: rotate(-90deg) translate(6px, -100%);
   transform: rotate(-90deg) translate(6px, -100%);
-  -webkit-transform-origin: left top;
   transform-origin: left top;
   max-width: 20vw;
 }
@@ -166,10 +163,8 @@ blockquote{
 }
 
 #project_search .input-field {
-  display: -webkit-flex;
   display: flex;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 
 .description ol li{
@@ -188,10 +183,8 @@ blockquote{
 }
 
 .all-projects{
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .all-projects-chip{
   margin-top: 1.5em;
@@ -250,4 +243,4 @@ blockquote{
 }
 
 
-/*# sourceMappingURL=main.css.map*/
+/*# sourceMappingURL=main.e6dc3b83.chunk.css.map*/
