@@ -3,27 +3,26 @@ import { useState, useEffect } from 'react'
 export default function useWindowSize() {
   const isClient = typeof window === 'object'
 
-  function getSize() {
-    return {
-      width: isClient ? window.innerWidth : 100,
-      height: isClient ? window.innerHeight : 100,
-    }
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize)
+  const [windowSize, setWindowSize] = useState({
+    width: isClient ? window.innerWidth : 100,
+    height: isClient ? window.innerHeight : 100,
+  })
 
   useEffect(() => {
-    if (!isClient) {
+    if (typeof window !== 'object') {
       return
     }
 
     function handleResize() {
-      setWindowSize(getSize())
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
     }
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, []) // Empty array ensures that effect is only run on mount and unmount
+  }, []) // empty array ensures that effect is only run on mount and unmount
 
   return windowSize
 }

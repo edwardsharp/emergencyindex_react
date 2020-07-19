@@ -1,22 +1,14 @@
 import React from 'react'
-import { setAddon, storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import JSXAddon from 'storybook-addon-jsx'
-
 import Button from './Button'
 
-setAddon(JSXAddon)
+export default { title: 'Button' }
 
-storiesOf('Button', module).addWithJSX('with text', () => (
-  <Button variant="contained" color="primary" onClick={action('clicked')}>
-    Emergency INDEX
-  </Button>
-))
+export const withText = () => <Button>Hello Button</Button>
 
-storiesOf('Button', module).addWithJSX('with some emoji', () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="zzzzzoooommmbie zzzooooommmmmbbbbie">
-      🧟‍♀️
+export const withEmoji = () => (
+  <Button>
+    <span role="img" aria-label="so cool">
+      😀 😎 👍 💯
     </span>
   </Button>
-))
+)

@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import iProject from '../interfaces/project'
 import './Project.css'
 
-class Project extends Component<{ project: iProject; idx?: number }> {
+class Project extends Component<{
+  project: iProject
+  measure: () => void
+  idx?: number
+}> {
   render() {
-    const { project, idx } = this.props
+    const { project, measure, idx } = this.props
+    if (!project) {
+      return null
+    }
+
     return (
       <article className="Project row">
         <div className="flex">
@@ -15,12 +23,17 @@ class Project extends Component<{ project: iProject; idx?: number }> {
                 <img
                   src={project.image}
                   className="materialboxed project-img"
-                  data-caption={`photo: ${project.photo_credit &&
-                    project.photo_credit.replace('Photo credit: ', '')}`}
+                  data-caption={`photo: ${
+                    project.photo_credit &&
+                    project.photo_credit.replace('Photo credit: ', '')
+                  }`}
                   alt="project"
+                  onLoad={measure}
                 />
-                <div className="photo-credit truncate">{`${project.photo_credit &&
-                  project.photo_credit.replace('Photo credit: ', '')}`}</div>
+                <div className="photo-credit truncate">{`${
+                  project.photo_credit &&
+                  project.photo_credit.replace('Photo credit: ', '')
+                }`}</div>
               </>
             )}
 
@@ -51,7 +64,7 @@ class Project extends Component<{ project: iProject; idx?: number }> {
               {project.contact}
 
               {project.links &&
-                project.links.map(link => {
+                project.links.map((link) => {
                   const l =
                     link.match('http://') || link.match('https://')
                       ? link
@@ -107,8 +120,8 @@ class Project extends Component<{ project: iProject; idx?: number }> {
 
           {project.tags && (
             <ul>
-              {project.tags.map(tag => (
-                <li key={tag}>
+              {project.tags.map((tag, idx) => (
+                <li key={`${tag}${idx}`}>
                   <a
                     className="waves-effect waves-light btn btn-flat modal-trigger chip"
                     href={`#modal${project.pages}`}
