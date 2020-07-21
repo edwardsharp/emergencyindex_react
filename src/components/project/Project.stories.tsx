@@ -2,7 +2,7 @@ import React from 'react'
 import { withKnobs, button } from '@storybook/addon-knobs'
 
 import Project from './Project'
-import { generateFakeProject } from '../__test__/projects'
+import { generateFakeProject } from '../../__test__/projects'
 
 export default {
   title: 'Project',

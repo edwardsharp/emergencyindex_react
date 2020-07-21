@@ -6,9 +6,9 @@ import {
   ListRowProps,
 } from 'react-virtualized'
 
-import useWindowSize from './useWindowSize'
-import iProject from '../interfaces/project'
-import Project from './Project'
+import useWindowSize from '../useWindowSize'
+import iProject from '../../interfaces/project'
+import Project from '../project/Project'
 
 interface VolumeProps {
   projects: iProject[]

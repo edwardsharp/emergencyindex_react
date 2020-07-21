@@ -1,0 +1,114 @@
+.Meta {
+  color: white;
+  overflow-wrap: break-word;
+}
+
+.Meta a {
+  color: #ff6600;
+}
+
+.Meta p {
+  font-size: 12px;
+}
+
+.Meta .contributor {
+  font-size: 17px;
+  font-weight: 100;
+}
+
+.Meta .title {
+  font-size: 19px;
+}
+.Meta .contributor {
+  margin-top: 1em;
+}
+.Meta .home {
+  margin: 1em 0;
+}
+
+.project-img.active {
+  max-width: none;
+  max-height: none;
+}
+.project-img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.photo-credit {
+  font-size: 12px;
+  position: absolute;
+  text-align: right;
+  -moz-transform: rotate(-90deg) translate(6px, -100%);
+  -webkit-transform: rotate(-90deg) translate(6px, -100%);
+  -o-transform: rotate(-90deg) translate(6px, -100%);
+  -ms-transform: rotate(-90deg) translate(6px, -100%);
+  transform: rotate(-90deg) translate(6px, -100%);
+  -ms-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  max-width: 20vw;
+}
+
+.project-collaborators {
+  margin-top: 0;
+}
+
+.project-name-with-collaborators {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .right-panel {
+    padding-left: 0.5rem !important;
+    padding-right: 1em !important;
+  }
+
+  .right-panel .title,
+  .right-panel .contributor {
+    display: none;
+  }
+
+  .Meta .contributor {
+    font-size: 1.33rem;
+    font-weight: 100;
+  }
+  .Meta .title {
+    font-size: 1.66rem;
+  }
+
+  .project-img {
+    max-height: none;
+  }
+  .photo-credit {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1281px) {
+  .Meta p,
+  .photo-credit {
+    font-size: 20px;
+  }
+  .description code,
+  .description kbd,
+  .description pre,
+  .description samp {
+    font-size: 22px;
+  }
+  .right-panel .title {
+    font-size: 30px;
+  }
+
+  .right-panel .contributor {
+    font-size: 28px;
+  }
+  .Meta .contributor {
+    font-size: 22px;
+  }
+
+  .Meta .title {
+    font-size: 24px;
+  }
+}

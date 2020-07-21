@@ -1,0 +1,44 @@
+.Description {
+  color: white;
+  padding-left: 2.5em !important;
+  padding-right: 2.5em !important;
+  padding-bottom: 1em;
+}
+
+.Description .title {
+  font-size: 1.66rem;
+  font-weight: 400;
+}
+
+.Description .contributor {
+  font-size: 1.33rem;
+  font-weight: 100;
+}
+
+@media (max-width: 600px) {
+  .Description {
+    padding-left: 0.5rem !important;
+    padding-right: 1em !important;
+  }
+
+  .Description .title,
+  .Description .contributor {
+    display: none;
+  }
+}
+
+@media (min-width: 1281px) {
+  .content code,
+  .content kbd,
+  .content pre,
+  .content samp {
+    font-size: 22px;
+  }
+  .Description .title {
+    font-size: 30px;
+  }
+
+  .Description .contributor {
+    font-size: 28px;
+  }
+}

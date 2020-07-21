@@ -3,7 +3,7 @@ import { withKnobs, number } from '@storybook/addon-knobs'
 
 import Volume from './Volume'
 
-import { generateFakeProjects } from '../__test__/projects'
+import { generateFakeProjects } from '../../__test__/projects'
 
 export default {
   title: 'Volume',
