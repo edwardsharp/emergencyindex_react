@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from './components/Button'
 import blob from './blob.svg'
 import './App.css'
 
@@ -13,27 +12,29 @@ class App extends Component {
             className="App-blob"
           />
           <p>
-            <Button
-              variant="contained"
-              color="primary"
-              href={
-                window.location.host.match(/localhost/)
+            <button
+              onClick={() =>
+                (window.location.href = window.location.host.match(/localhost/)
                   ? 'http://localhost:9009'
-                  : 'https://edwardsharp.github.io/emergencyindex_react/index.html'
+                  : 'https://edwardsharp.github.io/emergencyindex_react/index.html')
               }
             >
               storybook{' '}
               <span role="img" aria-label="book">
                 📓
               </span>
-            </Button>
+            </button>
           </p>
-          <Button variant="contained" href="https://github.com/emergencyindex/">
+          <button
+            onClick={() =>
+              (window.location.href = 'https://github.com/emergencyindex/')
+            }
+          >
             emergencyINDEX on github{' '}
             <span role="img" aria-label="smile cat">
               😸
             </span>
-          </Button>
+          </button>
         </header>
       </div>
     )
