@@ -1,3 +1,10 @@
 .Footer {
   color: white;
+  display: flex;
+}
+.Footer > div {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

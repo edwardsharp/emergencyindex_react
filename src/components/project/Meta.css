@@ -1,6 +1,9 @@
 .Meta {
   color: white;
   overflow-wrap: break-word;
+  margin-left: 1em;
+  box-sizing: border-box;
+  width: 25vw;
 }
 
 .Meta a {
@@ -60,6 +63,10 @@
 }
 
 @media (max-width: 600px) {
+  .Meta {
+    margin-left: 0.5em;
+  }
+
   .right-panel {
     padding-left: 0.5rem !important;
     padding-right: 1em !important;

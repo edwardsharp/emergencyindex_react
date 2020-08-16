@@ -26,7 +26,7 @@ function TOC(props: TOCProps) {
     projectsRef.current?.scrollToRow(idx)
     // well, need some time to measure all this :/
     window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 0)
-    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 500)
+    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 750)
   }
 
   return (
@@ -36,8 +36,10 @@ function TOC(props: TOCProps) {
         borderLeft: `${currentIdx === idx ? '5px solid white' : 'none'}`,
       }}
       onClick={() => tocRowClick(idx)}
+      title={`${project.pages} ${project.title} -- ${project.contributor}`}
     >
-      <span>{project.pages}</span>
+      <div>{project.title}</div>
+      <div>{project.contributor}</div>
     </div>
   )
 }
