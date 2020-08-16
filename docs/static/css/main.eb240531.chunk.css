@@ -5,6 +5,13 @@
 
 .Project .flex {
   display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .Project .flex {
+    flex-direction: column;
+  }
 }
 
 .Project a {
@@ -136,9 +143,11 @@ blockquote {
 
 .Meta .title {
   font-size: 19px;
+  text-transform: uppercase;
 }
 .Meta .contributor {
   margin-top: 1em;
+  text-transform: uppercase;
 }
 .Meta .home {
   margin: 1em 0;
@@ -174,6 +183,7 @@ blockquote {
 @media (max-width: 600px) {
   .Meta {
     margin-left: 0.5em;
+    width: 100%;
   }
 
   .right-panel {
@@ -300,6 +310,8 @@ blockquote {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .Volume .TOCRow {
@@ -325,4 +337,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.6daf877f.chunk.css.map*/
+/*# sourceMappingURL=main.eb240531.chunk.css.map*/
