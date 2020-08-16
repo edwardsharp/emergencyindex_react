@@ -109,7 +109,11 @@ function Volume(props: VolumeProps) {
           // do we need to registerChild, here? like registerChild() or ref={registerChild}
           // 'style' attribute required to position cell (within parent List)
           <div style={style}>
-            <Project measure={measure} project={projects[index]} idx={index} />
+            <Project
+              measure={() => isVisible && measure()}
+              project={projects[index]}
+              idx={index}
+            />
           </div>
         )}
       </CellMeasurer>

@@ -7,7 +7,7 @@ export default function Meta(props: {
   project: iProject
   measure?: () => void
 }) {
-  const { project, measure } = props
+  const { project } = props
   return (
     <div className="Meta">
       {project.image && (
@@ -21,7 +21,6 @@ export default function Meta(props: {
               project.photo_credit.replace('Photo credit: ', '')
             }`}
             alt="project"
-            onLoad={measure}
           />
           <div className="photo-credit truncate">{`${
             project.photo_credit &&
