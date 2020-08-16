@@ -150,6 +150,7 @@ function Volume(props: VolumeProps) {
           width={200}
           rowCount={projects.length}
           rowHeight={50}
+          scrollToAlignment="center"
           rowRenderer={tocRowRenderer}
           ref={tocRef}
         />
