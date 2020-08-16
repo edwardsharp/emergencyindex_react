@@ -1,7 +1,25 @@
 import faker from 'faker'
 import iProject from '../interfaces/project'
 
-export const generateFakeProject = (): iProject => ({
+const timesPerformedWord = (times: number, volume: string): string => {
+  const words = [
+    'not even once',
+    'once',
+    'twice',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+    'ten',
+  ]
+  const howMany = words[times] ? words[times] : times
+  return `performed ${howMany} ${times > 2 ? 'times' : ''} in ${volume}`
+}
+
+export const generateFakeProject = (idx?: number): iProject => ({
   volume: '2011',
   image: `${faker.image.cats()}?cachebustr=${Math.random()}`,
   photo_credit: `${faker.name.firstName()} ${faker.name.lastName()}`,
@@ -23,7 +41,7 @@ export const generateFakeProject = (): iProject => ({
     'Hub',
     'Joint',
   ])}, ${faker.address.city()}, ${faker.address.countryCode()}`,
-  times_performed: faker.random.number(10).toString(),
+  times_performed: timesPerformedWord(faker.random.number(24), '2011'),
   contributor: `${faker.name.firstName()} ${faker.name.lastName()}`,
   collaborators: Array.from(
     { length: faker.random.number(6) },
@@ -44,7 +62,13 @@ export const generateFakeProject = (): iProject => ({
       faker.hacker.noun()
     ),
   ],
-  pages: `002-003`,
+  pages: `${
+    idx
+      ? `${(idx * 2).toString().padStart(3, '0')}-${(idx * 2 + 1)
+          .toString()
+          .padStart(3, '0')}`
+      : '001-002'
+  }`,
   needs_review: true,
   description: `${faker.hacker.phrase()} ${faker.hacker.phrase()}\n${faker.lorem.paragraphs(
     Math.max(4, faker.random.number(25))
@@ -54,4 +78,4 @@ export const generateFakeProject = (): iProject => ({
 export const generateFakeProjects = (projectCount: number): iProject[] =>
   Array(projectCount)
     .fill({})
-    .map(() => generateFakeProject())
+    .map((_, idx) => generateFakeProject(idx))

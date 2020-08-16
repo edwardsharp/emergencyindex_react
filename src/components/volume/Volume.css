@@ -1,0 +1,21 @@
+.Volume {
+  display: flex;
+  width: 100vw;
+  color: white;
+  background-color: #282c34;
+}
+
+.Volume > .TOC {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Volume .TOCRow {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.5em;
+}
