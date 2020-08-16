@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .Volume .TOCRow {

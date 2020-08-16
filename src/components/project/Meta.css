@@ -21,9 +21,11 @@
 
 .Meta .title {
   font-size: 19px;
+  text-transform: uppercase;
 }
 .Meta .contributor {
   margin-top: 1em;
+  text-transform: uppercase;
 }
 .Meta .home {
   margin: 1em 0;

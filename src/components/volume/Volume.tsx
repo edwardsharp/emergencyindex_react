@@ -145,7 +145,6 @@ function Volume(props: VolumeProps) {
         style={showSideNav ? undefined : { display: 'none' }}
       >
         <List
-          // scrollTop={currentProjetIdx * 50}
           height={windowSize.height}
           width={200}
           rowCount={projects.length}
