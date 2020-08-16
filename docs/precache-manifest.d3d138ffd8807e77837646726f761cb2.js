@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "098e24555e1052daa25e9b57b9fcc91d",
+    "revision": "8f88b6088148a03f91fd539d9c898020",
     "url": "iframe.html"
   },
   {
