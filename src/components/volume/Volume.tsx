@@ -52,7 +52,7 @@ function Volume(props: VolumeProps) {
   const { projects } = props
 
   const windowSize = useWindowSize()
-  const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 700)
+  const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 600)
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
@@ -73,7 +73,7 @@ function Volume(props: VolumeProps) {
   }, [currentProjectIdx])
 
   useEffect(() => {
-    setShowSideNav(windowSize.width > 700)
+    setShowSideNav(windowSize.width > 600)
   }, [windowSize])
 
   const cache = new CellMeasurerCache({

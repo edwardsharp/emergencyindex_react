@@ -5,6 +5,13 @@
 
 .Project .flex {
   display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .Project .flex {
+    flex-direction: column;
+  }
 }
 
 .Project a {

@@ -65,6 +65,7 @@
 @media (max-width: 600px) {
   .Meta {
     margin-left: 0.5em;
+    width: 100%;
   }
 
   .right-panel {

@@ -15,7 +15,7 @@ export default function Meta(props: {
           {/* `/assets/img/${project.volume}/${project.image}` */}
           <img
             src={project.image}
-            className="materialboxed project-img"
+            className="project-img"
             data-caption={`photo: ${
               project.photo_credit &&
               project.photo_credit.replace('Photo credit: ', '')
