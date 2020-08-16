@@ -52,7 +52,7 @@ function Volume(props: VolumeProps) {
   const { projects } = props
 
   const windowSize = useWindowSize()
-  // const [size, setSize] = useState(() => windowSize.height)
+  const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 700)
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
@@ -71,6 +71,10 @@ function Volume(props: VolumeProps) {
     )
     tocRef.current?.scrollToRow(currentProjectIdx)
   }, [currentProjectIdx])
+
+  useEffect(() => {
+    setShowSideNav(windowSize.width > 700)
+  }, [windowSize])
 
   const cache = new CellMeasurerCache({
     defaultHeight: windowSize.height,
@@ -127,7 +131,7 @@ function Volume(props: VolumeProps) {
       <div className="Projects">
         <List
           height={windowSize.height}
-          width={windowSize.width - 8 - 200}
+          width={windowSize.width - 8 - (showSideNav ? 200 : 0)}
           rowCount={projects.length}
           deferredMeasurementCache={cache}
           rowHeight={cache.rowHeight}
@@ -136,7 +140,10 @@ function Volume(props: VolumeProps) {
           ref={projectsRef}
         />
       </div>
-      <div className="TOC">
+      <div
+        className="TOC"
+        style={showSideNav ? undefined : { display: 'none' }}
+      >
         <List
           // scrollTop={currentProjetIdx * 50}
           height={windowSize.height}
