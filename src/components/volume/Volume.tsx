@@ -33,13 +33,11 @@ function TOC(props: TOCProps) {
     <div
       className="TOCRow"
       style={{
-        borderLeft: `${currentIdx === idx ? '5px solid black' : 'none'}`,
+        borderLeft: `${currentIdx === idx ? '5px solid white' : 'none'}`,
       }}
       onClick={() => tocRowClick(idx)}
     >
-      <span>
-        {idx} {project.pages}
-      </span>
+      <span>{project.pages}</span>
     </div>
   )
 }

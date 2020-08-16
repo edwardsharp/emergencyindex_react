@@ -21,7 +21,7 @@ const timesPerformedWord = (times: number, volume: string): string => {
 
 export const generateFakeProject = (idx?: number): iProject => ({
   volume: '2011',
-  image: `${faker.image.cats()}?cachebustr=${Math.random()}`,
+  image: `${faker.image.cats()}?cachebustr=${idx}`,
   photo_credit: `${faker.name.firstName()} ${faker.name.lastName()}`,
   title: `${faker.hacker.adjective()} ${faker.hacker.adjective()} ${faker.hacker.noun()}`,
   first_performed: `${faker.date.month()} ${Math.max(
