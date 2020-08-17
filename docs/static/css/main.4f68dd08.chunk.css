@@ -334,6 +334,11 @@ blockquote {
   font-size: 14px;
 }
 
+.Footer ul {
+  list-style: none;
+  display: inline-block;
+}
+
 .Footer ul > li {
   min-height: 35px;
 }
@@ -365,6 +370,10 @@ blockquote {
   outline: none;
 }
 
+.Volume .TOCListWrapper {
+  margin-top: 50px;
+}
+
 .Volume > .TOC {
   height: 100vh;
   display: flex;
@@ -376,7 +385,6 @@ blockquote {
 
 .Volume .TOCRow {
   height: 50px;
-  width: 200px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -396,14 +404,28 @@ blockquote {
   text-overflow: ellipsis;
 }
 
+@media (max-width: 600px) {
+  .Volume > .TOC {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #282c34;
+  }
+}
+
 .Search {
   height: 50px;
-  width: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .Search > input {
   height: 30px;
-  width: 205px;
+  width: 100%;
+  min-width: 185px;
   font-size: 14px;
   border: none;
   box-sizing: border-box;
@@ -417,6 +439,7 @@ blockquote {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: #282c34;
 }
 
 .Search > .results-count > button {
@@ -426,4 +449,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.f7b8602e.chunk.css.map*/
+/*# sourceMappingURL=main.4f68dd08.chunk.css.map*/
