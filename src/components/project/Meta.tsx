@@ -72,7 +72,7 @@ export default function Meta(props: {
               onClick={(event) => {
                 event.preventDefault()
                 event.stopPropagation()
-                setQuery(project.home)
+                setQuery(collaborator)
               }}
             >
               {collaborator}
