@@ -97,7 +97,7 @@ export default function Search(props: SearchProps) {
   return (
     <div className="Search">
       <input
-        value={query}
+        value={query || ''}
         onChange={(event) => {
           // ah hmm, debounce this?
           setQuery(event.currentTarget.value)
