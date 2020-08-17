@@ -70,7 +70,7 @@ export const generateFakeProject = (idx?: number): iProject => ({
       : '001-002'
   }`,
   needs_review: true,
-  description: `${faker.hacker.phrase()} ${faker.hacker.phrase()}\n${faker.lorem.paragraphs(
+  content: `${faker.hacker.phrase()} ${faker.hacker.phrase()}\n${faker.lorem.paragraphs(
     Math.max(4, faker.random.number(25))
   )}`,
 })

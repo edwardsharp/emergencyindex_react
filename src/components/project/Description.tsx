@@ -19,7 +19,7 @@ export default function Description(props: {
       <h6 className="contributor">{project.contributor}</h6>
 
       <div className="content">
-        {project.description.split('\n').map((p, i) => (
+        {project.content.split('\n').map((p, i) => (
           <p key={i}>{p}</p>
         ))}
       </div>

@@ -1,0 +1,21 @@
+.Search {
+  height: 50px;
+  width: 200px;
+}
+
+.Search > input {
+  height: 30px;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.Search > .results-count {
+  height: 20px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

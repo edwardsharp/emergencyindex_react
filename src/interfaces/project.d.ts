@@ -8,7 +8,7 @@ export default interface Project {
   first_performed?: string
   place?: string
   times_performed?: string
-  contributor?: string 
+  contributor?: string
   collaborators?: string[]
   home?: string
   links?: string[]
@@ -17,5 +17,5 @@ export default interface Project {
   tags?: string[]
   pages?: string
   needs_review?: boolean
-  description: string
+  content: string
 }

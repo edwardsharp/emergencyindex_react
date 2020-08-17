@@ -11,6 +11,7 @@ import useWindowSize from '../useWindowSize'
 import iProject from '../../interfaces/project'
 import Project from '../project/Project'
 import './Volume.css'
+import Search from './Search'
 
 interface TOCProps {
   project: iProject
@@ -49,14 +50,13 @@ interface VolumeProps {
 }
 
 function Volume(props: VolumeProps) {
-  const { projects } = props
-
   const windowSize = useWindowSize()
   const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 600)
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
 
+  const [projects, setResults] = useState<iProject[]>(() => props.projects)
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0)
 
   const dSetCurrentProjectIdx = useCallback(
@@ -65,10 +65,10 @@ function Volume(props: VolumeProps) {
   )
 
   useEffect(() => {
-    console.log(
-      'currentProjectIdx effect! currentProjectIdx:',
-      currentProjectIdx
-    )
+    // console.log(
+    //   'currentProjectIdx effect! currentProjectIdx:',
+    //   currentProjectIdx
+    // )
     tocRef.current?.scrollToRow(currentProjectIdx)
   }, [currentProjectIdx])
 
@@ -80,6 +80,12 @@ function Volume(props: VolumeProps) {
     defaultHeight: windowSize.height,
     fixedWidth: true,
   })
+
+  function searchBlur(event: React.FocusEvent<HTMLInputElement>) {
+    if (projects.length === 0) {
+      setResults(props.projects)
+    }
+  }
 
   function tocRowRenderer(props: ListRowProps) {
     const { index, key, style } = props
@@ -99,7 +105,7 @@ function Volume(props: VolumeProps) {
     const { index, isVisible, key, parent, style } = props
 
     if (isVisible) {
-      console.log(index, 'isVisible!')
+      // console.log(index, 'isVisible!')
       dSetCurrentProjectIdx(index)
     }
 
@@ -144,6 +150,11 @@ function Volume(props: VolumeProps) {
         className="TOC"
         style={showSideNav ? undefined : { display: 'none' }}
       >
+        <Search
+          projects={projects}
+          setResults={setResults}
+          searchBlur={searchBlur}
+        />
         <List
           height={windowSize.height}
           width={200}
