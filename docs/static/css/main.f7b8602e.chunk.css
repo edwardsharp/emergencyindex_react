@@ -403,11 +403,12 @@ blockquote {
 
 .Search > input {
   height: 30px;
-  width: 100%;
+  width: 205px;
   font-size: 14px;
   border: none;
   box-sizing: border-box;
   padding-left: 10px;
+  border-bottom-left-radius: 6px;
 }
 
 .Search > .results-count {
@@ -425,4 +426,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.5080cd2e.chunk.css.map*/
+/*# sourceMappingURL=main.f7b8602e.chunk.css.map*/
