@@ -18,7 +18,7 @@ export const project = () => {
   button('randomize project text', () => {
     project = generateFakeProject()
   })
-  return <Project project={project} />
+  return <Project project={project} setQuery={() => {}} />
 }
 
 export const meta = () => {
@@ -26,7 +26,7 @@ export const meta = () => {
   button('randomize project text', () => {
     project = generateFakeProject()
   })
-  return <Meta project={project} />
+  return <Meta project={project} setQuery={() => {}} />
 }
 
 export const description = () => {
@@ -42,5 +42,5 @@ export const footer = () => {
   button('randomize project text', () => {
     project = generateFakeProject()
   })
-  return <Footer project={project} />
+  return <Footer project={project} setQuery={() => {}} />
 }
