@@ -18,12 +18,20 @@ type ProjectProps =
 interface SearchProps {
   projects: iProject[]
   setResults: React.Dispatch<React.SetStateAction<iProject[]>>
-  searchBlur: (event: React.FocusEvent<HTMLInputElement>) => void
+  query: string | undefined
+  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
+  searchBlur: () => void
+  clearSearch: () => void
 }
 export default function Search(props: SearchProps) {
-  const { projects, setResults, searchBlur } = props
-
-  const [query, setQuery] = useState<string | undefined>(undefined)
+  const {
+    projects,
+    setResults,
+    query,
+    setQuery,
+    searchBlur,
+    clearSearch,
+  } = props
 
   // setExactMatchOptions
   const [exactMatchOptions] = useState<{ [key in ProjectProps]: boolean }>({
@@ -102,6 +110,16 @@ export default function Search(props: SearchProps) {
         <span>
           {projects.length} {projects.length === 1 ? 'project' : 'projects'}
         </span>
+        {query !== undefined && (
+          <button
+            title="clear search"
+            onClick={() => {
+              clearSearch()
+            }}
+          >
+            &times;
+          </button>
+        )}
       </div>
     </div>
   )

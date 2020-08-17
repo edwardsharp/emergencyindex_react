@@ -5,9 +5,10 @@ import iProject from '../../interfaces/project'
 
 export default function Meta(props: {
   project: iProject
+  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
   measure?: () => void
 }) {
-  const { project } = props
+  const { project, setQuery } = props
   return (
     <div className="Meta">
       {project.image && (
@@ -37,19 +38,63 @@ export default function Meta(props: {
         {project.volume === '2011' && 'first performed on '}
         {project.first_performed}
         <br />
-        {project.place}
+        <span
+          className="hotlink"
+          onClick={(event) => {
+            event.preventDefault()
+            event.stopPropagation()
+            setQuery(project.place)
+          }}
+        >
+          {project.place}
+        </span>
+
         <br />
         {project.times_performed}
       </p>
 
-      <h6 className="contributor">{project.contributor}</h6>
+      <h6
+        className="contributor hotlink"
+        onClick={(event) => {
+          event.preventDefault()
+          event.stopPropagation()
+          setQuery(project.contributor)
+        }}
+      >
+        {project.contributor}
+      </h6>
 
       <p className="project-collaborators">
-        {project.collaborators && project.collaborators.join(', ')}
+        {project.collaborators &&
+          project.collaborators.map((collaborator, i) => (
+            <span
+              className="hotlink"
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                setQuery(project.home)
+              }}
+            >
+              {collaborator}
+              {project.collaborators &&
+                i < project.collaborators.length - 1 &&
+                ', '}
+            </span>
+          ))}
       </p>
 
       <p className="home">
-        {project.home}
+        <span
+          className="hotlink"
+          onClick={(event) => {
+            event.preventDefault()
+            event.stopPropagation()
+            setQuery(project.home)
+          }}
+        >
+          {project.home}
+        </span>
+
         <br />
         {project.contact}
 

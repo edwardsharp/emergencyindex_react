@@ -3,13 +3,17 @@ import React from 'react'
 import './Footer.css'
 import iProject from '../../interfaces/project'
 
-export default function Footer(props: { project: iProject }) {
-  const { project } = props
+interface FooterProps {
+  project: iProject
+  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
+}
+
+export default function Footer(props: FooterProps) {
+  const { project, setQuery } = props
   return (
     <div className="Footer">
       <div>
         <a
-          className="waves-effect waves-light btn btn-flat chip tooltipped"
           data-tooltip="Edit This Project on GitHub"
           data-position="top"
           href={`https://github.com/emergencyindex/projects-${project.volume}/blob/projects/${project.pages}.md`}
@@ -19,7 +23,6 @@ export default function Footer(props: { project: iProject }) {
           <i className="material-icons">edit</i>
         </a>
         <a
-          className="waves-effect waves-light btn btn-flat chip tooltipped"
           data-tooltip="Cite this project"
           data-position="top"
           href={project.url ? project.url : '#'}
@@ -27,7 +30,6 @@ export default function Footer(props: { project: iProject }) {
           <i className="material-icons">cite</i>
         </a>
         <a
-          className="waves-effect waves-light btn btn-flat chip tooltipped"
           data-tooltip="Permanent link to this project"
           data-position="top"
           href={project.url ? project.url : '#'}
@@ -41,9 +43,14 @@ export default function Footer(props: { project: iProject }) {
           {project.tags.map((tag, idx) => (
             <li key={`${tag}${idx}`}>
               <a
-                className="waves-effect waves-light btn btn-flat modal-trigger chip"
-                href={`#modal${project.pages}`}
+                className="hotlink chip"
+                href="#"
                 data-tag={tag}
+                onClick={(event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  setQuery(tag)
+                }}
               >
                 {tag}
               </a>

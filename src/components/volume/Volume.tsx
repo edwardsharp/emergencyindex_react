@@ -57,6 +57,7 @@ function Volume(props: VolumeProps) {
   const tocRef = useRef<List>(null)
 
   const [projects, setResults] = useState<iProject[]>(() => props.projects)
+  const [query, setQuery] = useState<string | undefined>(undefined)
   const [currentProjectIdx, setCurrentProjectIdx] = useState(0)
 
   const dSetCurrentProjectIdx = useCallback(
@@ -81,7 +82,7 @@ function Volume(props: VolumeProps) {
     fixedWidth: true,
   })
 
-  function searchBlur(event: React.FocusEvent<HTMLInputElement>) {
+  function searchBlur() {
     if (projects.length === 0) {
       setResults(props.projects)
     }
@@ -124,6 +125,7 @@ function Volume(props: VolumeProps) {
             <Project
               measure={() => isVisible && measure()}
               project={projects[index]}
+              setQuery={setQuery}
               idx={index}
             />
           </div>
@@ -152,8 +154,14 @@ function Volume(props: VolumeProps) {
       >
         <Search
           projects={projects}
+          query={query}
+          setQuery={setQuery}
           setResults={setResults}
           searchBlur={searchBlur}
+          clearSearch={() => {
+            setQuery(undefined)
+            setResults(props.projects)
+          }}
         />
         <List
           height={windowSize.height}

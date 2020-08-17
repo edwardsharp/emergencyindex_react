@@ -7,7 +7,12 @@
 }
 
 .Meta a {
-  color: #ff6600;
+  color: gray;
+}
+
+.Meta a:hover {
+  color: black;
+  background-color: white;
 }
 
 .Meta p {
@@ -39,6 +44,7 @@
   max-width: 100%;
   width: auto;
   height: auto;
+  filter: grayscale(1);
 }
 
 .photo-credit {
@@ -70,6 +76,10 @@
     width: 100%;
   }
 
+  .Meta p {
+    font-size: 1.1em;
+  }
+
   .right-panel {
     padding-left: 0.5rem !important;
     padding-right: 1em !important;
@@ -83,9 +93,11 @@
   .Meta .contributor {
     font-size: 1.33rem;
     font-weight: 100;
+    margin: 0.5em 0;
   }
   .Meta .title {
     font-size: 1.66rem;
+    margin: 0.75em 0;
   }
 
   .project-img {
