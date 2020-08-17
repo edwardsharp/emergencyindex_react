@@ -72,7 +72,9 @@ function Volume(props: VolumeProps) {
   const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 600)
   const [searchFocused, setSearchFocused] = useState(false)
 
-  const tocWidth: 500 | 60 = searchFocused ? 500 : 60
+  const maxWidth = windowSize.width > 500 ? 500 : windowSize.width
+  const tocWidth = searchFocused ? maxWidth : 60
+  const searchWidth = tocWidth > 60 ? maxWidth : 185
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
@@ -196,12 +198,7 @@ function Volume(props: VolumeProps) {
           searchBlur={searchBlur}
           searchClear={searchClear}
           style={{
-            width:
-              tocWidth > 60
-                ? windowSize.width > 500
-                  ? '500px'
-                  : windowSize.width
-                : '185px',
+            width: searchWidth,
           }}
         />
 
