@@ -5,6 +5,11 @@
   background-color: #282c34;
 }
 
+.Volume .ReactVirtualized__Grid:focus,
+.Volume .ReactVirtualized__List:focus {
+  outline: none;
+}
+
 .Volume > .TOC {
   height: 100vh;
   display: flex;
