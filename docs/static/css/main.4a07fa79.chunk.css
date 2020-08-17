@@ -17,7 +17,13 @@
 .Project a {
   margin-left: 10px;
   margin-right: 10px;
-  color: #ff6600;
+  color: gray;
+}
+.Project a:hover,
+.Project .hotlink:hover {
+  color: black;
+  background-color: white;
+  cursor: pointer;
 }
 
 .Project ul {
@@ -129,7 +135,12 @@ blockquote {
 }
 
 .Meta a {
-  color: #ff6600;
+  color: gray;
+}
+
+.Meta a:hover {
+  color: black;
+  background-color: white;
 }
 
 .Meta p {
@@ -161,6 +172,8 @@ blockquote {
   max-width: 100%;
   width: auto;
   height: auto;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .photo-credit {
@@ -186,6 +199,10 @@ blockquote {
     width: 100%;
   }
 
+  .Meta p {
+    font-size: 1.1em;
+  }
+
   .right-panel {
     padding-left: 0.5rem !important;
     padding-right: 1em !important;
@@ -199,9 +216,11 @@ blockquote {
   .Meta .contributor {
     font-size: 1.33rem;
     font-weight: 100;
+    margin: 0.5em 0;
   }
   .Meta .title {
     font-size: 1.66rem;
+    margin: 0.75em 0;
   }
 
   .project-img {
@@ -298,6 +317,35 @@ blockquote {
   justify-content: flex-end;
 }
 
+.Footer .chip {
+  background-color: gray;
+  color: black;
+  padding: 6px 10px;
+  text-decoration: none;
+  border-radius: 666px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.Footer ul > li {
+  min-height: 35px;
+}
+
+.Footer ul > li > a {
+  min-height: 35px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .Footer > div {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
 .Volume {
   display: flex;
   width: 100vw;
@@ -336,5 +384,33 @@ blockquote {
   text-overflow: ellipsis;
 }
 
+.Search {
+  height: 50px;
+  width: 200px;
+}
 
-/*# sourceMappingURL=main.eb240531.chunk.css.map*/
+.Search > input {
+  height: 30px;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.Search > .results-count {
+  height: 20px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Search > .results-count > button {
+  height: 17px;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+
+/*# sourceMappingURL=main.4a07fa79.chunk.css.map*/
