@@ -18,16 +18,17 @@ interface TOCProps {
   idx: number
   currentIdx: number
   projectsRef: React.RefObject<List>
+  searchFocused: boolean
 }
 
 function TOC(props: TOCProps) {
-  const { idx, project, currentIdx, projectsRef } = props
+  const { idx, project, currentIdx, projectsRef, searchFocused } = props
 
   function tocRowClick(idx: number) {
     projectsRef.current?.scrollToRow(idx)
     // well, need some time to measure all this :/
-    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 0)
-    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 750)
+    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 100)
+    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 1000)
   }
 
   return (
@@ -39,8 +40,17 @@ function TOC(props: TOCProps) {
       onClick={() => tocRowClick(idx)}
       title={`${project.pages} ${project.title} -- ${project.contributor}`}
     >
-      <div>{project.title}</div>
-      <div>{project.contributor}</div>
+      {searchFocused ? (
+        <>
+          <div>
+            {project.volume} {project.pages}
+          </div>
+          <div>{project.title}</div>
+          <div>{project.contributor}</div>
+        </>
+      ) : (
+        <span>{project.pages}</span>
+      )}
     </div>
   )
 }
@@ -52,6 +62,9 @@ interface VolumeProps {
 function Volume(props: VolumeProps) {
   const windowSize = useWindowSize()
   const [showSideNav, setShowSideNav] = useState(() => windowSize.width > 600)
+  const [searchFocused, setSearchFocused] = useState(false)
+
+  const tocWidth: 500 | 60 = searchFocused ? 500 : 60
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
@@ -82,7 +95,18 @@ function Volume(props: VolumeProps) {
     fixedWidth: true,
   })
 
+  function searchClear() {
+    console.log('gonna searchClear!!!')
+    setQuery(undefined)
+    setResults(props.projects)
+  }
+
+  function searchFocus() {
+    setSearchFocused(true)
+  }
+
   function searchBlur() {
+    setSearchFocused(false)
     if (projects.length === 0) {
       setResults(props.projects)
     }
@@ -97,6 +121,7 @@ function Volume(props: VolumeProps) {
           idx={index}
           currentIdx={currentProjectIdx}
           projectsRef={projectsRef}
+          searchFocused={searchFocused}
         />
       </div>
     )
@@ -110,11 +135,16 @@ function Volume(props: VolumeProps) {
       dSetCurrentProjectIdx(index)
     }
 
+    const pKey = projects[index]
+      ? projects[index].url ||
+        `${projects[index].volume}${projects[index].pages}`
+      : key
+
     return (
       <CellMeasurer
         cache={cache}
         columnIndex={0}
-        key={key}
+        key={pKey}
         parent={parent}
         rowIndex={index}
       >
@@ -139,7 +169,7 @@ function Volume(props: VolumeProps) {
       <div className="Projects">
         <List
           height={windowSize.height}
-          width={windowSize.width - 8 - (showSideNav ? 200 : 0)}
+          width={windowSize.width - 8 - (showSideNav ? tocWidth : 0)}
           rowCount={projects.length}
           deferredMeasurementCache={cache}
           rowHeight={cache.rowHeight}
@@ -157,21 +187,22 @@ function Volume(props: VolumeProps) {
           query={query}
           setQuery={setQuery}
           setResults={setResults}
+          searchFocus={searchFocus}
           searchBlur={searchBlur}
-          clearSearch={() => {
-            setQuery(undefined)
-            setResults(props.projects)
-          }}
+          searchClear={searchClear}
+          tocWidth={tocWidth}
         />
-        <List
-          height={windowSize.height}
-          width={200}
-          rowCount={projects.length}
-          rowHeight={50}
-          scrollToAlignment="center"
-          rowRenderer={tocRowRenderer}
-          ref={tocRef}
-        />
+        <div className="TOCListWrapper">
+          <List
+            height={windowSize.height - 50}
+            width={tocWidth}
+            rowCount={projects.length}
+            rowHeight={50}
+            scrollToAlignment="center"
+            rowRenderer={tocRowRenderer}
+            ref={tocRef}
+          />
+        </div>
       </div>
     </div>
   )

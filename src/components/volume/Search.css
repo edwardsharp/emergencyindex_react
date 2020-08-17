@@ -1,11 +1,15 @@
 .Search {
   height: 50px;
-  width: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .Search > input {
   height: 30px;
-  width: 205px;
+  width: 100%;
+  min-width: 185px;
   font-size: 14px;
   border: none;
   box-sizing: border-box;
@@ -19,6 +23,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: #282c34;
 }
 
 .Search > .results-count > button {

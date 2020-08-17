@@ -10,6 +10,10 @@
   outline: none;
 }
 
+.Volume .TOCListWrapper {
+  margin-top: 50px;
+}
+
 .Volume > .TOC {
   height: 100vh;
   display: flex;
@@ -21,7 +25,6 @@
 
 .Volume .TOCRow {
   height: 50px;
-  width: 200px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

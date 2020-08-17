@@ -20,8 +20,10 @@ interface SearchProps {
   setResults: React.Dispatch<React.SetStateAction<iProject[]>>
   query: string | undefined
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
+  searchFocus: () => void
   searchBlur: () => void
-  clearSearch: () => void
+  searchClear: () => void
+  tocWidth: 500 | 60
 }
 export default function Search(props: SearchProps) {
   const {
@@ -29,8 +31,10 @@ export default function Search(props: SearchProps) {
     setResults,
     query,
     setQuery,
+    searchFocus,
     searchBlur,
-    clearSearch,
+    searchClear,
+    tocWidth,
   } = props
 
   // setExactMatchOptions
@@ -44,6 +48,7 @@ export default function Search(props: SearchProps) {
     tags: true,
     volume: true,
   })
+  const [focused, setFocused] = useState(false)
 
   useEffect(() => {
     if (query === '') {
@@ -95,7 +100,10 @@ export default function Search(props: SearchProps) {
   }
 
   return (
-    <div className="Search">
+    <div
+      className="Search"
+      style={{ width: tocWidth > 60 ? '500px' : '185px' }}
+    >
       <input
         value={query || ''}
         onChange={(event) => {
@@ -103,24 +111,35 @@ export default function Search(props: SearchProps) {
           setQuery(event.currentTarget.value)
         }}
         onKeyDown={(event) => event.key === 'Enter' && search(query)}
-        onBlur={searchBlur}
+        onFocus={() => {
+          setFocused(true)
+          searchFocus()
+        }}
+        onBlur={() => {
+          window.setTimeout(() => {
+            setFocused(false)
+            searchBlur()
+          }, 250)
+        }}
         placeholder="Search Emergency INDEX"
       />
-      <div className="results-count">
-        <span>
-          {projects.length} {projects.length === 1 ? 'project' : 'projects'}
-        </span>
-        {query !== undefined && (
-          <button
-            title="clear search"
-            onClick={() => {
-              clearSearch()
-            }}
-          >
-            &times;
-          </button>
-        )}
-      </div>
+      {focused && (
+        <div className="results-count">
+          <span>
+            {projects.length} {projects.length === 1 ? 'project' : 'projects'}
+          </span>
+          {query !== undefined && (
+            <button
+              title="clear search"
+              onClick={() => {
+                searchClear()
+              }}
+            >
+              clear
+            </button>
+          )}
+        </div>
+      )}
     </div>
   )
 }

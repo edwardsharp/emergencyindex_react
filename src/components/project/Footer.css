@@ -19,6 +19,11 @@
   font-size: 14px;
 }
 
+.Footer ul {
+  list-style: none;
+  display: inline-block;
+}
+
 .Footer ul > li {
   min-height: 35px;
 }
