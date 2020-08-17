@@ -360,6 +360,11 @@ blockquote {
   background-color: #282c34;
 }
 
+.Volume .ReactVirtualized__Grid:focus,
+.Volume .ReactVirtualized__List:focus {
+  outline: none;
+}
+
 .Volume > .TOC {
   height: 100vh;
   display: flex;
@@ -420,4 +425,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.7b059086.chunk.css.map*/
+/*# sourceMappingURL=main.23653b88.chunk.css.map*/
