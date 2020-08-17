@@ -83,21 +83,19 @@ export default function Meta(props: {
           ))}
       </p>
 
-      <p className="home">
-        <span
-          className="hotlink"
-          onClick={(event) => {
-            event.preventDefault()
-            event.stopPropagation()
-            setQuery(project.home)
-          }}
-        >
-          {project.home}
-        </span>
+      <p
+        className="home hotlink"
+        onClick={(event) => {
+          event.preventDefault()
+          event.stopPropagation()
+          setQuery(project.home)
+        }}
+      >
+        {project.home}
+      </p>
 
-        <br />
-        {project.contact}
-
+      <div>
+        <div className="contact">{project.contact}</div>
         {project.links &&
           project.links.map((link) => {
             const l =
@@ -106,14 +104,19 @@ export default function Meta(props: {
                 : `http://${link}`
             return (
               <span key={l}>
-                <br />
-                <a href={l} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={l}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="links"
+                >
                   {l}
                 </a>
+                <br />
               </span>
             )
           })}
-      </p>
+      </div>
 
       {project.footnote}
     </div>

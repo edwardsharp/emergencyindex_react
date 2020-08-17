@@ -47,7 +47,10 @@ export const generateFakeProject = (idx?: number): iProject => ({
     { length: faker.random.number(6) },
     () => `${faker.name.firstName()} ${faker.name.lastName()}`
   ),
-  home: faker.address.county(),
+  home: faker.random.arrayElement([
+    `${faker.address.city()}, ${faker.address.stateAbbr()}`,
+    `${faker.address.city()}, ${faker.address.countryCode()}`,
+  ]),
   links: [faker.internet.url()],
   contact: faker.internet.email(),
   footnote: ``,
