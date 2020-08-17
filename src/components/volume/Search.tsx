@@ -23,7 +23,7 @@ interface SearchProps {
   searchFocus: () => void
   searchBlur: () => void
   searchClear: () => void
-  tocWidth: 500 | 60
+  style?: React.CSSProperties
 }
 export default function Search(props: SearchProps) {
   const {
@@ -34,7 +34,7 @@ export default function Search(props: SearchProps) {
     searchFocus,
     searchBlur,
     searchClear,
-    tocWidth,
+    style,
   } = props
 
   // setExactMatchOptions
@@ -100,10 +100,7 @@ export default function Search(props: SearchProps) {
   }
 
   return (
-    <div
-      className="Search"
-      style={{ width: tocWidth > 60 ? '500px' : '185px' }}
-    >
+    <div className="Search" style={style}>
       <input
         value={query || ''}
         onChange={(event) => {

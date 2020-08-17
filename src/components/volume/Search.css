@@ -15,6 +15,10 @@
   box-sizing: border-box;
   padding-left: 10px;
   border-bottom-left-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.Search > input:focus {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .Search > .results-count {

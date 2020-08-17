@@ -195,8 +195,16 @@ function Volume(props: VolumeProps) {
           searchFocus={searchFocus}
           searchBlur={searchBlur}
           searchClear={searchClear}
-          tocWidth={tocWidth}
+          style={{
+            width:
+              tocWidth > 60
+                ? windowSize.width > 500
+                  ? '500px'
+                  : windowSize.width
+                : '185px',
+          }}
         />
+
         {(showSideNav || searchFocused) && (
           <div className="TOCListWrapper">
             <List
