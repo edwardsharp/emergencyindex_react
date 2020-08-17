@@ -19,10 +19,18 @@ interface TOCProps {
   currentIdx: number
   projectsRef: React.RefObject<List>
   searchFocused: boolean
+  showSideNav: boolean
 }
 
 function TOC(props: TOCProps) {
-  const { idx, project, currentIdx, projectsRef, searchFocused } = props
+  const {
+    idx,
+    project,
+    currentIdx,
+    projectsRef,
+    searchFocused,
+    showSideNav,
+  } = props
 
   function tocRowClick(idx: number) {
     projectsRef.current?.scrollToRow(idx)
@@ -122,6 +130,7 @@ function Volume(props: VolumeProps) {
           currentIdx={currentProjectIdx}
           projectsRef={projectsRef}
           searchFocused={searchFocused}
+          showSideNav={showSideNav}
         />
       </div>
     )
@@ -136,8 +145,7 @@ function Volume(props: VolumeProps) {
     }
 
     const pKey = projects[index]
-      ? projects[index].url ||
-        `${projects[index].volume}${projects[index].pages}`
+      ? `${projects[index].volume}${projects[index].pages}`
       : key
 
     return (
@@ -178,10 +186,7 @@ function Volume(props: VolumeProps) {
           ref={projectsRef}
         />
       </div>
-      <div
-        className="TOC"
-        style={showSideNav ? undefined : { display: 'none' }}
-      >
+      <div className="TOC">
         <Search
           projects={projects}
           query={query}
@@ -192,17 +197,19 @@ function Volume(props: VolumeProps) {
           searchClear={searchClear}
           tocWidth={tocWidth}
         />
-        <div className="TOCListWrapper">
-          <List
-            height={windowSize.height - 50}
-            width={tocWidth}
-            rowCount={projects.length}
-            rowHeight={50}
-            scrollToAlignment="center"
-            rowRenderer={tocRowRenderer}
-            ref={tocRef}
-          />
-        </div>
+        {(showSideNav || searchFocused) && (
+          <div className="TOCListWrapper">
+            <List
+              height={windowSize.height - 50}
+              width={tocWidth}
+              rowCount={projects.length}
+              rowHeight={50}
+              scrollToAlignment="center"
+              rowRenderer={tocRowRenderer}
+              ref={tocRef}
+            />
+          </div>
+        )}
       </div>
     </div>
   )

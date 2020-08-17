@@ -43,3 +43,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 600px) {
+  .Volume > .TOC {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #282c34;
+  }
+}
