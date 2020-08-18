@@ -1,17 +1,14 @@
 .Project {
   color: white;
   padding: 1em;
+  box-sizing: border-box;
+  height: 150vh;
+  padding: 1em;
 }
 
 .Project .flex {
   display: flex;
   flex-direction: row;
-}
-
-@media (max-width: 600px) {
-  .Project .flex {
-    flex-direction: column;
-  }
 }
 
 .Project a {
@@ -35,6 +32,10 @@
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.Project footer {
+  margin-top: 1em;
 }
 
 /* legacy cruft #TODO: tidy this shit! */
@@ -126,6 +127,16 @@ blockquote {
   margin-top: 1.5em;
 }
 
+@media (max-width: 600px) {
+  .Project .flex {
+    flex-direction: column;
+  }
+
+  .Project header {
+    margin-bottom: 1em;
+  }
+}
+
 .Meta {
   color: white;
   overflow-wrap: break-word;
@@ -207,7 +218,7 @@ blockquote {
   }
 
   .Meta p {
-    font-size: 1.1em;
+    font-size: 0.9em;
   }
 
   .right-panel {
@@ -285,15 +296,24 @@ blockquote {
   text-transform: uppercase;
 }
 
+.Description .content {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
 @media (max-width: 600px) {
   .Description {
-    padding-left: 0.5em;
-    padding-right: 1em;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .Description .title,
   .Description .contributor {
     display: none;
+  }
+
+  .Description .content {
+    width: 100vw;
   }
 }
 
@@ -316,6 +336,8 @@ blockquote {
 .Footer {
   color: white;
   display: flex;
+  justify-content: flex-end;
+  min-height: 50px;
 }
 .Footer > div {
   width: 25vw;
@@ -336,11 +358,17 @@ blockquote {
 
 .Footer ul {
   list-style: none;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .Footer ul > li {
   min-height: 35px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .Footer ul > li > a {
@@ -355,6 +383,9 @@ blockquote {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+  }
+  .Footer .chip {
+    font-size: 12px;
   }
 }
 
@@ -454,4 +485,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.2ad4e766.chunk.css.map*/
+/*# sourceMappingURL=main.de6c54fe.chunk.css.map*/
