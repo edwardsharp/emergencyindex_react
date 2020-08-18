@@ -155,38 +155,59 @@ blockquote {
 }
 
 .Meta p {
-  font-size: 12px;
-}
-
-.Meta .contributor {
-  font-size: 17px;
-  font-weight: 100;
+  font-size: 0.7em;
 }
 
 .Meta .title {
   font-size: 19px;
   text-transform: uppercase;
 }
+
 .Meta .contributor {
-  margin-top: 1em;
+  font-size: 17px;
+  font-weight: 100;
+  margin: 0.5em 0;
   text-transform: uppercase;
 }
+
 .Meta .home {
   margin: 1em 0;
+  font-size: 1em;
+}
+
+.Meta .place {
+  display: inline-block;
+  width: 100%;
+  margin: 0.5em 0;
 }
 
 .Meta .contact {
   font-size: 14px;
 }
-.Meta a.links {
-  margin: 0;
+
+.Meta .links {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.project-img.active {
+.Meta .links span {
+  width: 100%;
+}
+
+.Meta a.link {
+  margin: 0;
+  font-size: 14px;
+  display: inline-block;
+  width: 100%;
+}
+
+.Meta .project-img.active {
   max-width: none;
   max-height: none;
 }
-.project-img {
+.Meta .project-img {
   max-width: 100%;
   width: auto;
   height: auto;
@@ -194,7 +215,7 @@ blockquote {
           filter: grayscale(1);
 }
 
-.photo-credit {
+.Meta .photo-credit {
   font-size: 12px;
   position: absolute;
   text-align: right;
@@ -203,8 +224,16 @@ blockquote {
   max-width: 20vw;
 }
 
-.project-collaborators {
+.Meta .project-collaborators {
   margin-top: 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+}
+
+.Meta .project-collaborators .hotlink {
+  width: 100%;
 }
 
 .project-name-with-collaborators {
@@ -234,7 +263,7 @@ blockquote {
   .Meta .contributor {
     font-size: 1.33rem;
     font-weight: 100;
-    margin: 0.5em 0;
+    margin: 0.25em 0;
   }
   .Meta .title {
     font-size: 1.66rem;
@@ -252,7 +281,7 @@ blockquote {
 @media (min-width: 1281px) {
   .Meta p,
   .photo-credit {
-    font-size: 18px;
+    font-size: 1em;
   }
   .description code,
   .description kbd,
@@ -485,4 +514,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.de6c54fe.chunk.css.map*/
+/*# sourceMappingURL=main.343b6c58.chunk.css.map*/
