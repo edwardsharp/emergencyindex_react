@@ -69,19 +69,21 @@ export default function Meta(props: {
       <p className="project-collaborators">
         {project.collaborators &&
           project.collaborators.map((collaborator, i) => (
-            <span
-              className="hotlink"
-              onClick={(event) => {
-                event.preventDefault()
-                event.stopPropagation()
-                setQuery(collaborator)
-              }}
-            >
-              {collaborator}
+            <>
+              <span
+                className="hotlink"
+                onClick={(event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  setQuery(collaborator)
+                }}
+              >
+                {collaborator}
+              </span>
               {project.collaborators &&
                 i < project.collaborators.length - 1 &&
                 ', '}
-            </span>
+            </>
           ))}
       </p>
 

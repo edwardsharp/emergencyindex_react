@@ -92,9 +92,6 @@
 
 .Meta .project-collaborators {
   margin-top: 0;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   font-size: 0.9em;
 }
 
