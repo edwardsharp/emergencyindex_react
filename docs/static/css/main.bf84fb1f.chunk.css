@@ -226,9 +226,6 @@ blockquote {
 
 .Meta .project-collaborators {
   margin-top: 0;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   font-size: 0.9em;
 }
 
@@ -514,4 +511,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.343b6c58.chunk.css.map*/
+/*# sourceMappingURL=main.bf84fb1f.chunk.css.map*/
