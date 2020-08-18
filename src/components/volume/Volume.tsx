@@ -1,10 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import {
-  CellMeasurer,
-  CellMeasurerCache,
-  List,
-  ListRowProps,
-} from 'react-virtualized'
+import { List, ListRowProps } from 'react-virtualized'
 import debounce from 'lodash.debounce'
 
 import useWindowSize from '../useWindowSize'
@@ -34,9 +29,6 @@ function TOC(props: TOCProps) {
 
   function tocRowClick(idx: number) {
     projectsRef.current?.scrollToRow(idx)
-    // well, need some time to measure all this :/
-    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 100)
-    window.setTimeout(() => projectsRef.current?.scrollToRow(idx), 1000)
   }
 
   return (
@@ -75,6 +67,8 @@ function Volume(props: VolumeProps) {
   const maxWidth = windowSize.width > 500 ? 500 : windowSize.width
   const tocWidth = searchFocused ? maxWidth : 60
   const searchWidth = tocWidth > 60 ? maxWidth : 185
+  const minHeight =
+    windowSize.width < 600 ? windowSize.height * 2.5 : windowSize.height * 1.5 // ~100vh
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
@@ -89,21 +83,12 @@ function Volume(props: VolumeProps) {
   )
 
   useEffect(() => {
-    // console.log(
-    //   'currentProjectIdx effect! currentProjectIdx:',
-    //   currentProjectIdx
-    // )
     tocRef.current?.scrollToRow(currentProjectIdx)
   }, [currentProjectIdx])
 
   useEffect(() => {
     setShowSideNav(windowSize.width > 600)
   }, [windowSize])
-
-  const cache = new CellMeasurerCache({
-    defaultHeight: windowSize.height,
-    fixedWidth: true,
-  })
 
   function searchClear() {
     console.log('gonna searchClear!!!')
@@ -139,38 +124,21 @@ function Volume(props: VolumeProps) {
   }
 
   function projectRowRenderer(props: ListRowProps) {
-    const { index, isVisible, key, parent, style } = props
+    const { index, isVisible, style } = props
 
     if (isVisible) {
-      // console.log(index, 'isVisible!')
       dSetCurrentProjectIdx(index)
     }
 
-    const pKey = projects[index]
-      ? `${projects[index].volume}${projects[index].pages}`
-      : key
-
     return (
-      <CellMeasurer
-        cache={cache}
-        columnIndex={0}
-        key={pKey}
-        parent={parent}
-        rowIndex={index}
-      >
-        {({ measure }) => (
-          // do we need to registerChild, here? like registerChild() or ref={registerChild}
-          // 'style' attribute required to position cell (within parent List)
-          <div style={style}>
-            <Project
-              measure={() => isVisible && measure()}
-              project={projects[index]}
-              setQuery={setQuery}
-              idx={index}
-            />
-          </div>
-        )}
-      </CellMeasurer>
+      <div style={style}>
+        <Project
+          measure={() => {}}
+          project={projects[index]}
+          setQuery={setQuery}
+          idx={index}
+        />
+      </div>
     )
   }
 
@@ -181,8 +149,7 @@ function Volume(props: VolumeProps) {
           height={windowSize.height}
           width={windowSize.width - 8 - (showSideNav ? tocWidth : 0)}
           rowCount={projects.length}
-          deferredMeasurementCache={cache}
-          rowHeight={cache.rowHeight}
+          rowHeight={minHeight}
           rowRenderer={projectRowRenderer}
           scrollToAlignment="start"
           ref={projectsRef}

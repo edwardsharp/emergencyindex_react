@@ -12,7 +12,7 @@ export default function Footer(props: FooterProps) {
   const { project, setQuery } = props
   return (
     <div className="Footer">
-      <div>
+      {/* <div>
         <a
           data-tooltip="Edit This Project on GitHub"
           data-position="top"
@@ -36,7 +36,7 @@ export default function Footer(props: FooterProps) {
         >
           <i className="material-icons">link</i>
         </a>
-      </div>
+      </div> */}
 
       {project.tags && (
         <ul>

@@ -1,6 +1,8 @@
 .Footer {
   color: white;
   display: flex;
+  justify-content: flex-end;
+  min-height: 50px;
 }
 .Footer > div {
   width: 25vw;
@@ -21,11 +23,17 @@
 
 .Footer ul {
   list-style: none;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .Footer ul > li {
   min-height: 35px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .Footer ul > li > a {
@@ -40,5 +48,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+  }
+  .Footer .chip {
+    font-size: 12px;
   }
 }

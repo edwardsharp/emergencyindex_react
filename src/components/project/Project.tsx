@@ -33,7 +33,7 @@ export default function Project(props: ProjectProps) {
           <Description project={project} idx={idx} />
         </section>
       </div>
-      <footer className="col s12">
+      <footer>
         <Footer project={project} setQuery={setQuery} />
       </footer>
     </article>

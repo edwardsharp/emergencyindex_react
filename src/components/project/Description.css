@@ -18,15 +18,24 @@
   text-transform: uppercase;
 }
 
+.Description .content {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
 @media (max-width: 600px) {
   .Description {
-    padding-left: 0.5em;
-    padding-right: 1em;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .Description .title,
   .Description .contributor {
     display: none;
+  }
+
+  .Description .content {
+    width: 100vw;
   }
 }
 

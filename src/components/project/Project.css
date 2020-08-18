@@ -1,17 +1,14 @@
 .Project {
   color: white;
   padding: 1em;
+  box-sizing: border-box;
+  height: 150vh;
+  padding: 1em;
 }
 
 .Project .flex {
   display: flex;
   flex-direction: row;
-}
-
-@media (max-width: 600px) {
-  .Project .flex {
-    flex-direction: column;
-  }
 }
 
 .Project a {
@@ -35,6 +32,10 @@
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.Project footer {
+  margin-top: 1em;
 }
 
 /* legacy cruft #TODO: tidy this shit! */
@@ -124,4 +125,14 @@ blockquote {
 }
 .all-projects-chip {
   margin-top: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .Project .flex {
+    flex-direction: column;
+  }
+
+  .Project header {
+    margin-bottom: 1em;
+  }
 }
