@@ -21,7 +21,10 @@ const timesPerformedWord = (times: number, volume: string): string => {
 
 export const generateFakeProject = (idx?: number): iProject => ({
   volume: '2011',
-  image: `${faker.image.cats()}?cachebustr=${idx}`,
+  image: faker.random.arrayElement([
+    `${faker.image.cats()}?cachebustr=${idx}`,
+    `http://lorempixel.com/480/640/cats?cachebustr=${idx}`,
+  ]),
   photo_credit: `${faker.name.firstName()} ${faker.name.lastName()}`,
   title: `${faker.hacker.adjective()} ${faker.hacker.adjective()} ${faker.hacker.noun()}`,
   first_performed: `${faker.date.month()} ${Math.max(
@@ -51,7 +54,9 @@ export const generateFakeProject = (idx?: number): iProject => ({
     `${faker.address.city()}, ${faker.address.stateAbbr()}`,
     `${faker.address.city()}, ${faker.address.countryCode()}`,
   ]),
-  links: [faker.internet.url()],
+  links: Array.from({ length: faker.random.number(4) }, () =>
+    faker.internet.url()
+  ),
   contact: faker.internet.email(),
   footnote: ``,
   tags: [

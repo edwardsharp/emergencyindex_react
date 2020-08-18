@@ -35,11 +35,13 @@ export default function Meta(props: {
       </h5>
 
       <p>
-        {project.volume === '2011' && 'first performed on '}
-        {project.first_performed}
-        <br />
+        <span className="first_performed">
+          {project.volume === '2011' && 'first performed on '}
+          {project.first_performed}
+        </span>
+
         <span
-          className="hotlink"
+          className="place hotlink"
           onClick={(event) => {
             event.preventDefault()
             event.stopPropagation()
@@ -96,26 +98,29 @@ export default function Meta(props: {
 
       <div>
         <div className="contact">{project.contact}</div>
-        {project.links &&
-          project.links.map((link) => {
-            const l =
-              link.match('http://') || link.match('https://')
-                ? link
-                : `http://${link}`
-            return (
-              <span key={l}>
-                <a
-                  href={l}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="links"
-                >
-                  {l}
-                </a>
-                <br />
-              </span>
-            )
-          })}
+        {project.links && (
+          <div className="links">
+            {project.links.map((link) => {
+              const l =
+                link.match('http://') || link.match('https://')
+                  ? link
+                  : `http://${link}`
+              return (
+                <span key={l}>
+                  <a
+                    href={l}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link"
+                  >
+                    {l}
+                  </a>
+                  <br />
+                </span>
+              )
+            })}
+          </div>
+        )}
       </div>
 
       {project.footnote}
