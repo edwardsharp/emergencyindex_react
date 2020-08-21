@@ -270,14 +270,14 @@ blockquote {
   .project-img {
     max-height: none;
   }
-  .photo-credit {
+  .Meta .photo-credit {
     max-width: none;
   }
 }
 
 @media (min-width: 1281px) {
   .Meta p,
-  .photo-credit {
+  .Meta .photo-credit {
     font-size: 1em;
   }
   .description code,
@@ -324,7 +324,13 @@ blockquote {
 
 .Description .content {
   max-height: 100vh;
-  overflow: scroll;
+  overflow: auto;
+  max-width: calc(100vw - 33vw - 70px);
+}
+
+.Description pre,
+.Description code {
+  font-size: 0.9em !important;
 }
 
 @media (max-width: 600px) {
@@ -339,7 +345,8 @@ blockquote {
   }
 
   .Description .content {
-    width: 100vw;
+    /* width: 100vw; */
+    max-width: 98vw;
   }
 }
 
@@ -403,6 +410,11 @@ blockquote {
 }
 
 @media (max-width: 600px) {
+  .Footer {
+    padding-top: 10px;
+    max-height: 180px;
+    overflow: auto;
+  }
   .Footer > div {
     width: auto;
     display: flex;
@@ -504,6 +516,20 @@ blockquote {
   background-color: #282c34;
 }
 
+.Search > .results-count-unfocused {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.Search > .results-count-unfocused span {
+  background-color: #282c34;
+  max-width: 70px;
+  padding-right: 1em;
+  text-align: right;
+}
+
 .Search > .results-count > button {
   height: 17px;
   font-weight: bold;
@@ -511,4 +537,4 @@ blockquote {
 }
 
 
-/*# sourceMappingURL=main.bf84fb1f.chunk.css.map*/
+/*# sourceMappingURL=main.a056a8be.chunk.css.map*/
