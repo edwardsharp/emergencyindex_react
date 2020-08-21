@@ -136,14 +136,14 @@
   .project-img {
     max-height: none;
   }
-  .photo-credit {
+  .Meta .photo-credit {
     max-width: none;
   }
 }
 
 @media (min-width: 1281px) {
   .Meta p,
-  .photo-credit {
+  .Meta .photo-credit {
     font-size: 1em;
   }
   .description code,

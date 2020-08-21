@@ -30,6 +30,20 @@
   background-color: #282c34;
 }
 
+.Search > .results-count-unfocused {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.Search > .results-count-unfocused span {
+  background-color: #282c34;
+  max-width: 70px;
+  padding-right: 1em;
+  text-align: right;
+}
+
 .Search > .results-count > button {
   height: 17px;
   font-weight: bold;

@@ -9,13 +9,17 @@ export default function Meta(props: {
   measure?: () => void
 }) {
   const { project, setQuery } = props
+
+  const imgSrc = project.image?.startsWith('http')
+    ? project.image
+    : `https://emergencyindex.com/assets/img/${project.volume}/${project.image}`
   return (
     <div className="Meta">
-      {project.image && (
+      {imgSrc && (
         <>
           {/* `/assets/img/${project.volume}/${project.image}` */}
           <img
-            src={project.image}
+            src={imgSrc}
             className="project-img"
             data-caption={`photo: ${
               project.photo_credit &&
@@ -36,7 +40,7 @@ export default function Meta(props: {
 
       <p>
         <span className="first_performed">
-          {project.volume === '2011' && 'first performed on '}
+          {project.volume?.toString() === '2011' && 'first performed on '}
           {project.first_performed}
         </span>
 
@@ -69,7 +73,7 @@ export default function Meta(props: {
       <p className="project-collaborators">
         {project.collaborators &&
           project.collaborators.map((collaborator, i) => (
-            <>
+            <span key={i}>
               <span
                 className="hotlink"
                 onClick={(event) => {
@@ -83,7 +87,7 @@ export default function Meta(props: {
               {project.collaborators &&
                 i < project.collaborators.length - 1 &&
                 ', '}
-            </>
+            </span>
           ))}
       </p>
 

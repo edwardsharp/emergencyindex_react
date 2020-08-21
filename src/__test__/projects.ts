@@ -80,7 +80,10 @@ export const generateFakeProject = (idx?: number): iProject => ({
   needs_review: true,
   content: `${faker.hacker.phrase()} ${faker.hacker.phrase()}\n${faker.lorem.paragraphs(
     Math.max(4, faker.random.number(25))
-  )}`,
+  )}`
+    .split('\n')
+    .map((p) => `<p>${p}</p>`)
+    .join(''),
 })
 
 export const generateFakeProjects = (projectCount: number): iProject[] =>

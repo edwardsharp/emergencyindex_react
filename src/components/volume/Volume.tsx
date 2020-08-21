@@ -49,7 +49,10 @@ function TOC(props: TOCProps) {
           <div>{project.contributor}</div>
         </>
       ) : (
-        <span>{project.pages}</span>
+        <>
+          <div>{project.volume}</div>
+          <span>{project.pages}</span>
+        </>
       )}
     </div>
   )
@@ -124,14 +127,14 @@ function Volume(props: VolumeProps) {
   }
 
   function projectRowRenderer(props: ListRowProps) {
-    const { index, isVisible, style } = props
+    const { index, isVisible, style, key } = props
 
     if (isVisible) {
       dSetCurrentProjectIdx(index)
     }
 
     return (
-      <div style={style}>
+      <div style={style} key={key}>
         <Project
           measure={() => {}}
           project={projects[index]}

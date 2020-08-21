@@ -120,6 +120,11 @@ export default function Search(props: SearchProps) {
         }}
         placeholder="Search Emergency INDEX"
       />
+      {!focused && (
+        <div className="results-count-unfocused">
+          <span>{projects.length}</span>
+        </div>
+      )}
       {focused && (
         <div className="results-count">
           <span>

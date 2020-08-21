@@ -20,7 +20,13 @@
 
 .Description .content {
   max-height: 100vh;
-  overflow: scroll;
+  overflow: auto;
+  max-width: calc(100vw - 33vw - 70px);
+}
+
+.Description pre,
+.Description code {
+  font-size: 0.9em !important;
 }
 
 @media (max-width: 600px) {
@@ -35,7 +41,8 @@
   }
 
   .Description .content {
-    width: 100vw;
+    /* width: 100vw; */
+    max-width: 98vw;
   }
 }
 

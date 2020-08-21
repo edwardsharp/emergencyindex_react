@@ -12,6 +12,7 @@
     "build-storybook": "build-storybook -s public -o docs"
   },
   "dependencies": {
+    "html-react-parser": "^0.13.0",
     "lodash.debounce": "^4.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

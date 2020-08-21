@@ -1,44 +1,54 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import blob from './blob.svg'
+import iProject from './interfaces/project'
 import './App.css'
+import Volume from './components/volume/Volume'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <div
-            style={{ backgroundImage: `url('${blob}'` }}
-            className="App-blob"
-          />
-          <p>
-            <button
-              onClick={() =>
-                (window.location.href = window.location.host.match(/localhost/)
-                  ? 'http://localhost:9009'
-                  : 'https://edwardsharp.github.io/emergencyindex_react/index.html')
-              }
-            >
-              storybook{' '}
-              <span role="img" aria-label="book">
-                📓
-              </span>
-            </button>
-          </p>
-          <button
-            onClick={() =>
-              (window.location.href = 'https://github.com/emergencyindex/')
-            }
-          >
-            emergencyINDEX on github{' '}
-            <span role="img" aria-label="smile cat">
-              😸
-            </span>
-          </button>
-        </header>
-      </div>
+export default function App() {
+  const [loading, setLoading] = useState(true)
+  const [projects, setProjects] = useState<iProject[]>([])
+  useEffect(() => {
+    const localStoreProjects = JSON.parse(
+      localStorage.getItem('projects') || 'null'
     )
-  }
-}
 
-export default App
+    if (!localStoreProjects) {
+      console.log('fetching projects from https://emergencyindex.com/data.json')
+      fetch('https://emergencyindex.com/data.json')
+        .then((response) => response.json())
+        .then((data) => {
+          // let _projects = {};
+          // data.forEach(function(p) {
+          //   _projects[p.url] = { ...p, ref: p.url };
+          // })
+          // setProjects(_projects);
+          try {
+            localStorage.setItem('projects', JSON.stringify(data))
+          } catch (e) {
+            console.warn('caught error in localStorage.setItem e:', e)
+          }
+          setProjects(data)
+        })
+        .catch((e) => {
+          console.warn('onoz caught error loading data e:', e)
+        })
+    } else {
+      setProjects(localStoreProjects)
+    }
+    setLoading(false)
+  }, [])
+
+  return (
+    <div className="App">
+      {loading ? (
+        <div
+          style={{ backgroundImage: `url('${blob}'` }}
+          className="App-blob"
+        />
+      ) : (
+        <Volume projects={projects} />
+      )}
+    </div>
+  )
+}
