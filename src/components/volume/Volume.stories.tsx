@@ -18,7 +18,7 @@ export const example = () => {
   return <Volume projects={projects} />
 }
 
-export const withRealData = () => {
+function RealDataVolume() {
   const [projects, setProjects] = useState<iProject[]>([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -60,5 +60,9 @@ export const withRealData = () => {
     }
   }, [])
 
-  return loading ? 'loading' : <Volume projects={projects} />
+  return loading ? <div>loading</div> : <Volume projects={projects} />
+}
+
+export const withRealData = () => {
+  return <RealDataVolume />
 }
