@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withKnobs, button, number } from '@storybook/addon-knobs'
 import faker from 'faker'
 
@@ -8,7 +8,6 @@ import Description from './Description'
 import Footer from './Footer'
 
 import { generateFakeProject } from '../../__test__/projects'
-import { useEffect } from '@storybook/addons'
 
 export default {
   title: 'Project',
@@ -39,10 +38,8 @@ export const description = () => {
   return <Description project={project} />
 }
 
-export const footer = () => {
-  const tagCount = number('tag count', 10)
-
-  let project = { content: '', tags: tags() }
+function FooterStory(props: { tagCount: number }) {
+  const { tagCount } = props
 
   function tags(): string[] {
     return Array.from({ length: tagCount }, () =>
@@ -54,6 +51,8 @@ export const footer = () => {
     )
   }
 
+  let project = { content: '', tags: tags() }
+
   useEffect(() => {
     project.tags = tags()
   }, [tagCount])
@@ -63,4 +62,10 @@ export const footer = () => {
       <Footer project={project} setQuery={() => {}} />
     </div>
   )
+}
+
+export const footer = () => {
+  const tagCount = number('tag count', 10)
+
+  return <FooterStory tagCount={tagCount} />
 }

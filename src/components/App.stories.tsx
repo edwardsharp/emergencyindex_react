@@ -5,10 +5,9 @@ storiesOf('Introduction', module).add('to Storybook', () => (
   <div style={{ margin: '2em' }}>
     <h1>Emergency INDEX</h1>
     <h3>storybook</h3>
-
-    <p>This is a UI component library for the emergencyindex react app.</p>
+    <p>this is a UI component library</p>
     <p>
-      A story is a single example of one or more UI components. Basically a
+      a story is a single example of one or more UI components, basically a
       story is like a visual test case.
     </p>
   </div>
