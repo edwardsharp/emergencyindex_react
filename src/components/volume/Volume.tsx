@@ -70,8 +70,10 @@ function Volume(props: VolumeProps) {
   const maxWidth = windowSize.width > 500 ? 500 : windowSize.width
   const tocWidth = searchFocused ? maxWidth : 60
   const searchWidth = tocWidth > 60 ? maxWidth : 185
+  // would be neat if we could somehow render a dummy project that's got the longest length of each project field
+  // then measure that to determine the minHeight here. would need to do that initially and on window resize.
   const minHeight =
-    windowSize.width < 600 ? windowSize.height * 2.5 : windowSize.height * 1.5 // ~100vh
+    windowSize.width < 600 ? windowSize.height * 2.5 : windowSize.height * 2
 
   const projectsRef = useRef<List>(null)
   const tocRef = useRef<List>(null)
